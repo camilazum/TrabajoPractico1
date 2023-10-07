@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Button, FlatList, Modal, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
-import ListItem from './ListItem';
+import ListItem from './Components/ListItem';
 
 const App = () => {
   const [data, setData] = useState([
@@ -32,13 +32,13 @@ const App = () => {
         <View style={styles.modalContainer}>
           <TextInput
             style={styles.input}
-            placeholder="Enter ID"
+            placeholder="Ingresar ID"
             value={newItem.id}
             onChangeText={(text) => setNewItem({ ...newItem, id: text })}
           />
           <TextInput
             style={styles.input}
-            placeholder="Enter Image URL"
+            placeholder="Ingresar Link de Imagen"
             value={newItem.image}
             onChangeText={(text) => setNewItem({ ...newItem, image: text })}
           />
