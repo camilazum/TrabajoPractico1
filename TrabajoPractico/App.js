@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, Button, FlatList, Modal, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
 import ListItem from './Components/ListItem';
+import AddItemModal from './Components/AddItemModal';
+
 
 const App = () => {
   const [data, setData] = useState([
@@ -28,28 +30,14 @@ const App = () => {
         renderItem={({ item }) => <ListItem item={item} />}
       />
 
-      <Modal animationType="slide" transparent={false} visible={modalVisible}>
-        <View style={styles.modalContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Ingresar ID"
-            value={newItem.id}
-            onChangeText={(text) => setNewItem({ ...newItem, id: text })}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Ingresar Link de Imagen"
-            value={newItem.image}
-            onChangeText={(text) => setNewItem({ ...newItem, image: text })}
-          />
-          <TouchableOpacity style={styles.button} onPress={addItem}>
-            <Text style={styles.buttonText}>Add Item</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => setModalVisible(false)}>
-            <Text style={styles.buttonText}>Cancel</Text>
-          </TouchableOpacity>
-        </View>
-      </Modal>
+
+      <AddItemModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        newItem={newItem}
+        setNewItem={setNewItem}
+        addItem={addItem}
+      />
     </View>
   );
 };
